@@ -12,8 +12,6 @@ This project grew in stages as I worked my way through the default tutorials tha
 
 The steps below follow that same path so you can build your own Guardian of Light from the ground up.
 
----
-
 ## Features
 
 📟 Arduino light sensing and LCD output  
@@ -22,8 +20,6 @@ The steps below follow that same path so you can build your own Guardian of Ligh
 🧍 Animated 3D character in Three.js  
 📜 Typewriter-style scroll UI  
 🕰 Time-aware state switching  
-
----
 
 ## Setup
 
@@ -41,8 +37,6 @@ Start with the physical core of the system.
 <img src="assets/stuff/hardware.jpg" height="250">
 
 Now that we've given our Guardian "senses", let's give them a body. 
-
----
 
 ### 2. Web Interface
 
@@ -89,10 +83,7 @@ New assets can easily be generated with any image model. I used GPT5.2 to create
   </tr>
 </table>
 
-
 Then, use [Tencent's 3D model](https://3d.hunyuan.tencent.com/), for free, to turn your 2D t-posed character into a 3D model that you can optionally animate using their default actions. When generating the model, select 50K faces to ensure the animation renders. They have a time limit on how long it can take, and with many millions of faces, the request will time out. 
-
----
 
 ### 3. Online Mode
 
