@@ -315,8 +315,8 @@
         } catch (e) {
           if (!local.isLive) {
             const h = new Date().getHours();
-            // const ds = (h>=19||h<6)?"NIGHT":(h<11?"DAY":(h<15?"BRIGHT":"DUSK"));
-            const ds = "BRIGHT";
+            const ds = (h>=19||h<6)?"NIGHT":(h<11?"DAY":(h<15?"BRIGHT":"DUSK"));
+            // const ds = "BRIGHT";
             updateAtmo(ds);
             if (!ui.text.textContent) ui.text.textContent = SNIPPET[ds];
           }
