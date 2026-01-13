@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/stuff/light_logo.png" alt="Guardian of Light Logo" width="260"/>
+  <img src="./assets/stuff/light_logo.png" alt="Guardian of Light Logo" width="450"/>
 </div>
 
 # 🕯 Guardian of Light
