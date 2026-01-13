@@ -17,7 +17,7 @@ The steps below follow that same path so you can build your own Guardian of Ligh
 📟 Arduino light sensing and LCD output  
 🧠 LLM-generated text  
 🗣 Text to speech voice output  
-🧍 Animated 3D character in Three.js  
+🧍 Animated 3D character in Three.js 
 📜 Typewriter-style scroll UI  
 🕰 Time-aware state switching  
 
