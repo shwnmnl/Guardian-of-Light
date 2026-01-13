@@ -89,8 +89,7 @@ Then, use [Tencent's 3D model](https://3d.hunyuan.tencent.com/), for free, to tu
 
 To enable live text generation and speech, you will need API access.
 
-Set the following environment variables
-
+Set the following environment variables:
 - An OpenAI API key
 - An ElevenLabs API key
 
