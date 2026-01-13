@@ -209,3 +209,6 @@ __marimo__/
 .DS_Store
 
 latest_lcd.txt
+latest.json
+latest.mp3
+audio/

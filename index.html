@@ -6,7 +6,6 @@
 
     <title>Guardian of Light</title>
     <meta name="description" content="An ambient, time-shifting guardian that watches the light and whispers in a gothic, solarpunk tone." />
-    <meta name="robots" content="index,follow" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -42,7 +41,6 @@
         background: var(--bg) center/cover no-repeat fixed;
         font-family: system-ui, sans-serif;
         -webkit-text-size-adjust: 100%;
-        touch-action: manipulation;
       }
 
       .layout {
@@ -59,12 +57,7 @@
         justify-content: center;
       }
 
-      .right {
-        position: relative;
-        overflow: hidden;
-        min-height: 280px;
-      }
-
+      .right { position: relative; overflow: hidden; min-height: 280px; }
       canvas { width: 100%; height: 100%; display: block; }
 
       .scroll-ui {
@@ -89,18 +82,20 @@
         color: var(--ink);
       }
 
-      .scroll-title, .scroll-subtitle { text-align: center; }
-
       .scroll-title {
         margin-top: 10px;
         font-size: clamp(10px, 1.6vw, 13px);
         margin-bottom: 6px;
+        text-align: center;
       }
+
+      #telemetry { font-size: 8px; opacity: 0.5; margin-left: 8px; }
 
       .scroll-subtitle {
         font-size: clamp(7px, 1.2vw, 9px);
         margin-bottom: 10px;
         opacity: 0.8;
+        text-align: center;
       }
 
       .scroll-text {
@@ -111,36 +106,30 @@
         overflow-y: auto;
         padding-right: 10px;
         text-align: left;
-        overscroll-behavior: contain;
       }
 
       .scroll-footer {
-        margin-top: 0px;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 10px;
       }
 
-      .scroll-hint {
+      .scroll-hint { font-size: clamp(7px, 1.2vw, 9px); color: var(--ink-soft); }
+      .scroll-cursor { font-size: clamp(10px, 1.7vw, 12px); animation: blink 0.9s steps(1) infinite; }
+
+      @keyframes blink { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
+
+      .audio-btn {
+        appearance: none;
+        border: 0;
+        padding: 8px 10px;
+        border-radius: 10px;
+        background: rgba(255,255,255,0.55);
+        color: var(--ink);
+        font-family: "Press Start 2P", sans-serif;
         font-size: clamp(7px, 1.2vw, 9px);
-        color: var(--ink-soft);
-      }
-
-      .scroll-cursor {
-        font-size: clamp(10px, 1.7vw, 12px);
-        color: rgba(120, 70, 24, 0.85);
-        animation: blink 0.9s steps(1) infinite;
-      }
-
-      @keyframes blink {
-        0% { opacity: 0; }
-        50% { opacity: 1; }
-        100% { opacity: 0; }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .scroll-cursor { animation: none; }
+        cursor: pointer;
       }
 
       .site-logo {
@@ -148,101 +137,42 @@
         top: 8px;
         left: 8px;
         height: clamp(72px, 12vw, 200px);
-        width: auto;
         z-index: 10;
         pointer-events: none;
       }
 
-      .github-link {
-        position: fixed;
-        bottom: 14px;
-        right: 14px;
-        font-size: 32px;
-        color: rgba(255, 255, 255, 0.5);
-        transition: opacity 0.2s ease;
-        z-index: 9999;
-      }
-
-      .github-link:hover { opacity: 0.9; }
+      .github-link { position: fixed; bottom: 14px; right: 14px; font-size: 32px; color: rgba(255, 255, 255, 0.5); z-index: 100; }
 
       @media (max-width: 900px) {
-        html, body { overflow: hidden; }
-
-        .layout {
-          grid-template-columns: 1fr;
-          grid-template-rows: 48vh 52vh;
-          height: 100vh;
-        }
-
-        .left {
-          padding: 16px;
-          align-items: flex-start;
-          justify-content: center;
-        }
-
-        .scroll-ui {
-          margin-right: 0;
-          margin-top: 90px;
-          width: min(720px, 94vw);
-          height: min(520px, 48vh);
-          aspect-ratio: auto;
-        }
-
-        .right {
-          height: 52vh;
-          min-height: 0px;
-        }
-
-        body .site-logo {
-          position: fixed;
-          top: 10px;
-          left: 50% !important;
-          right: auto;
-          margin: 0;
-          height: 160px;
-          width: auto;
-          transform: translateX(-50%) !important;
-          z-index: 10;
-          pointer-events: none;
-        }
-
-        .scroll-inner {
-          inset: 44px 56px 54px 56px;
-        }
-
-        .scroll-text {
-          min-height: 140px;
-          font-size: 11px;
-          line-height: 1.75;
-        }
+        .layout { grid-template-columns: 1fr; grid-template-rows: 48vh 52vh; height: 100vh; }
+        .left { padding: 16px; align-items: flex-start; }
+        .scroll-ui { margin-right: 0; margin-top: 90px; width: 94vw; height: 48vh; aspect-ratio: auto; }
+        .right { height: 52vh; }
+        .site-logo { left: 50% !important; transform: translateX(-50%); height: 160px; }
+        .scroll-inner { inset: 44px 56px 54px 56px; }
       }
     </style>
   </head>
 
   <body>
-    <a href="https://github.com/shwnmnl/Guardian-of-Light" target="_blank" class="github-link" aria-label="GitHub">
-      <i class="fab fa-github"></i>
-    </a>
-
-    <img src="./assets/stuff/light_logo.png" alt="Guardian of Light" class="site-logo" />
+    <a href="https://github.com/shwnmnl/Guardian-of-Light" target="_blank" class="github-link"><i class="fab fa-github"></i></a>
+    <img src="./assets/stuff/light_logo.png" alt="Logo" class="site-logo" />
 
     <div class="layout">
       <div class="left">
-        <section class="scroll-ui" aria-label="Scroll dialog">
+        <section class="scroll-ui">
           <div class="scroll-inner">
-            <div class="scroll-title" id="uiTitle">Traveler Log</div>
-            <div class="scroll-subtitle" id="uiSubtitle">Status: online</div>
-
-            <div id="uiText" class="scroll-text" role="status" aria-live="polite" aria-atomic="true"></div>
-
+            <div class="scroll-title">Traveler Log <span id="telemetry"></span></div>
+            <div class="scroll-subtitle" id="uiSubtitle">Status: Offline</div>
+            <div id="uiText" class="scroll-text"></div>
             <div class="scroll-footer">
-              <span class="scroll-hint" id="uiHint">Click to skip</span>
-              <span class="scroll-cursor" id="uiCursor" aria-hidden="true">▶</span>
+              <button id="audioBtn" class="audio-btn">Audio: Off</button>
+              <span class="scroll-hint" id="uiHint">Waiting...</span>
+              <span class="scroll-cursor">▶</span>
             </div>
           </div>
         </section>
       </div>
-
       <div class="right" id="stage"></div>
     </div>
 
@@ -250,232 +180,175 @@
       import * as THREE from "three";
       import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
-      // ---------- UI + Text (define first so ensureRightCharacterLoaded can call it) ----------
       const ui = {
-        panel: document.querySelector(".scroll-ui"),
-        title: document.getElementById("uiTitle"),
         subtitle: document.getElementById("uiSubtitle"),
         text: document.getElementById("uiText"),
-        cursor: document.getElementById("uiCursor"),
+        tele: document.getElementById("telemetry"),
         hint: document.getElementById("uiHint"),
+        audioBtn: document.getElementById("audioBtn")
       };
 
       const SNIPPET = {
-        BRIGHT: "The light stands at its zenith, bold and unblinking. I endure it with a courteous smile, though even radiance can grow tiresome. All things soften eventually.",
-        DAY: "The world stirs and remembers itself. Footsteps, voices, small hopes. I watch, quietly amused, as life pretends it is not being observed.",
-        DUSK: "The sun bows low, gilding every shadow with farewell. This is my favorite hour, when certainty loosens its grip. Secrets grow brave here.",
-        NIGHT: "Darkness settles like a velvet curtain. I remain, untroubled, counting the quiet things. You may rest. I will keep watch.",
+        BRIGHT: "The light stands at its zenith, bold and unblinking. I endure it with a courteous smile.",
+        DAY: "The world stirs and remembers itself. Footsteps, voices, small hopes.",
+        DUSK: "The sun bows low, gilding every shadow with farewell. Secrets grow brave here.",
+        NIGHT: "Darkness settles like a velvet curtain. You may rest. I will keep watch."
       };
 
-      let typingToken = 0;
-      let isSkipping = false;
+      const local = { isLive: false, lastMsgId: null, currentUrl: null, audioWanted: localStorage.getItem("gol_audio") === "1" };
+      const voicePlayer = new Audio();
 
-      function sleep(ms) {
-        return new Promise((r) => setTimeout(r, ms));
-      }
-
-      function setUiMeta({ title, subtitle } = {}) {
-        if (title) ui.title.textContent = title;
-        if (subtitle) ui.subtitle.textContent = subtitle;
-      }
-
-      async function typewriter(text, { cps = 28 } = {}) {
-        const token = ++typingToken;
-        isSkipping = false;
-
-        ui.cursor.style.opacity = "0";
-        if (ui.hint) ui.hint.textContent = "Click to skip";
-        ui.text.textContent = "";
-        ui.text.scrollTop = 0;
-
-        const baseDelay = Math.max(8, Math.floor(1000 / cps));
-
-        for (let i = 0; i < text.length; i++) {
-          if (token !== typingToken) return;
-
-          ui.text.textContent += text[i];
-          ui.text.scrollTop = ui.text.scrollHeight;
-
-          if (isSkipping) continue;
-
-          const ch = text[i];
-          if (ch === "." || ch === "!" || ch === "?") await sleep(baseDelay * 10);
-          else if (ch === "," || ch === ";" || ch === ":") await sleep(baseDelay * 6);
-          else if (ch === "\n") await sleep(baseDelay * 6);
-          else await sleep(baseDelay);
-        }
-
-        if (token !== typingToken) return;
-        ui.cursor.style.opacity = "";
-      }
-
-      ui.panel.addEventListener("click", () => {
-        isSkipping = true;
-      });
-
-      // ---------- Three.js ----------
-      const stage = document.getElementById("stage");
-
+      // --- THREE.JS (Original Framing & Logic) ---
       const scene = new THREE.Scene();
-
-      const camera = new THREE.PerspectiveCamera(
-        35,
-        stage.clientWidth / stage.clientHeight,
-        0.1,
-        100
-      );
-
+      const stage = document.getElementById("stage");
+      const camera = new THREE.PerspectiveCamera(35, stage.clientWidth / stage.clientHeight, 0.1, 100);
       const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.setSize(stage.clientWidth, stage.clientHeight);
       stage.appendChild(renderer.domElement);
-
       scene.add(new THREE.AmbientLight(0xffffff, 1.0));
+      const dl = new THREE.DirectionalLight(0xffffff, 1.2); dl.position.set(2, 4, 2); scene.add(dl);
 
-      const dir = new THREE.DirectionalLight(0xffffff, 1.2);
-      dir.position.set(2, 4, 2);
-      scene.add(dir);
-
+      let currentModel = { root: null, mixer: null };
       const loader = new GLTFLoader();
-      let current = { gltf: null, mixer: null, root: null, url: null };
-
-      function pickByHour(h) {
-        if (h >= 19 || h < 6) {
-          return { state: "NIGHT", glb: "./assets/anim/night_dancing.glb", bg: "url('./assets/bg/night_bg.png')" };
-        }
-        if (h >= 6 && h < 11) {
-          return { state: "DAY", glb: "./assets/anim/day_dancing.glb", bg: "url('./assets/bg/day_bg.png')" };
-        }
-        if (h >= 11 && h < 15) {
-          return { state: "BRIGHT", glb: "./assets/anim/bright_dancing.glb", bg: "url('./assets/bg/bright_bg.png')" };
-        }
-        return { state: "DUSK", glb: "./assets/anim/dusk_dancing.glb", bg: "url('./assets/bg/dusk_bg.png')" };
-      }
-
-      function disposeModel(root) {
-        root.traverse((obj) => {
-          if (obj.isMesh) {
-            obj.geometry?.dispose?.();
-            const mat = obj.material;
-            if (Array.isArray(mat)) mat.forEach(disposeMaterial);
-            else disposeMaterial(mat);
-          }
-        });
-      }
-
-      function disposeMaterial(mat) {
-        if (!mat) return;
-        for (const k of Object.keys(mat)) {
-          const v = mat[k];
-          if (v && v.isTexture) v.dispose();
-        }
-        mat.dispose?.();
-      }
-
-      function frameObject(object3d) {
-        const box = new THREE.Box3().setFromObject(object3d);
-        const size = box.getSize(new THREE.Vector3());
-        const center = box.getCenter(new THREE.Vector3());
-
-        object3d.position.sub(center);
-
-        const maxDim = Math.max(size.x, size.y, size.z);
-        const fov = THREE.MathUtils.degToRad(camera.fov);
-        const dist = (maxDim * 0.5) / Math.tan(fov * 0.5);
-
-        const padding = 3.0;
-        camera.position.set(0, maxDim * 0.15, dist * padding);
-
-        camera.near = dist / 100;
-        camera.far = dist * 100;
-        camera.updateProjectionMatrix();
-
-        camera.lookAt(0, 0, 0);
-      }
 
       async function loadCharacter(url) {
-        if (current.root) {
-          scene.remove(current.root);
-          disposeModel(current.root);
-          current.mixer = null;
-          current.root = null;
-          current.gltf = null;
-        }
-
-        let gltf;
-        try {
-          gltf = await loader.loadAsync(url);
-        } catch (e) {
-          console.error("Failed to load GLB:", url, e);
-          return;
-        }
-
+        if (local.currentUrl === url) return;
+        
+        const gltf = await loader.loadAsync(url);
         const root = gltf.scene;
+
+        // 1. CLEAR OLD MODEL
+        if (currentModel.root) {
+          scene.remove(currentModel.root);
+          currentModel.root.traverse(n => { if(n.geometry) n.geometry.dispose(); });
+        }
+
+        // 2. THE SCALE MAP (Adjust these numbers until they look identical)
+        // Lower the number to make a specific character smaller.
+        const scaleMap = {
+          "night": 0.75,
+          "dusk": 0.65,
+          "day": 0.75,
+          "bright": 0.75
+        };
+
+        // We convert the URL to lowercase to ensure the check always works
+        const urlLower = url.toLowerCase();
+        let chosenScale = 0.12; // Default scale
+
+        for (const [key, value] of Object.entries(scaleMap)) {
+          if (urlLower.includes(key)) {
+            chosenScale = value;
+            break;
+          }
+        }
+
+        root.scale.set(chosenScale, chosenScale, chosenScale);
+
+        // 3. FIXED POSITIONING
+        // This keeps him grounded. Adjust -0.6 to move him up/down globally.
+        root.position.set(0, -0.01, 0); 
+        root.rotation.y = Math.PI * 0.15; 
+
+        // 4. FIXED CAMERA
+        // Keeping the camera at 2.8 distance means the ONLY thing 
+        // changing size is the scaleMap above.
+        camera.position.set(0, 0, 2.8); 
+        camera.lookAt(0, 0, 0);
+
         scene.add(root);
 
-        root.scale.set(0.1, 0.1, 0.1);
-
-        frameObject(root);
-
-        const isTall = stage.clientHeight > stage.clientWidth;
-        root.position.y += isTall ? 0.04 : 0.02;
-
-        root.rotation.y = Math.PI * 0.15;
-
         const mixer = new THREE.AnimationMixer(root);
-        const clip = gltf.animations?.[0];
-        if (clip) {
-          const action = mixer.clipAction(clip);
-          action.reset();
-          action.setLoop(THREE.LoopRepeat, Infinity);
-          action.play();
+        if (gltf.animations[0]) {
+          mixer.clipAction(gltf.animations[0]).play();
         }
-
-        current = { gltf, mixer, root, url };
+        
+        currentModel = { root, mixer };
+        local.currentUrl = url;
       }
 
-      const clock = new THREE.Clock();
-
-      function resize() {
-        const w = stage.clientWidth, h = stage.clientHeight;
-        camera.aspect = w / h;
-        camera.updateProjectionMatrix();
-        renderer.setSize(w, h);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      }
-
-      window.addEventListener("resize", resize);
-      resize();
-
-      let lastState = null;
-
-      async function ensureRightCharacterLoaded() {
-        const hour = new Date().getHours();
-        const pick = pickByHour(hour);
-
-        document.documentElement.style.setProperty("--bg", pick.bg);
-
-        if (pick.glb !== current.url) {
-          await loadCharacter(pick.glb);
-        }
-
-        if (pick.state !== lastState) {
-          lastState = pick.state;
-          setUiMeta({ title: "Guardian of Light", subtitle: `State: ${pick.state.toLowerCase()}` });
-          typewriter(SNIPPET[pick.state] || "", { cps: 30 });
+      // --- CORE LOGIC ---
+      let typeToken = 0;
+      async function typewriter(text) {
+        const token = ++typeToken;
+        ui.text.textContent = "";
+        for (const char of text) {
+          if (token !== typeToken) return;
+          ui.text.textContent += char;
+          ui.text.scrollTop = ui.text.scrollHeight;
+          await new Promise(r => setTimeout(r, 35));
         }
       }
 
-      await ensureRightCharacterLoaded();
-      setInterval(ensureRightCharacterLoaded, 5 * 60 * 1000);
+      function updateAtmo(state) {
+        const map = {
+          NIGHT: { bg: "url('./assets/bg/night_bg.png')", glb: "./assets/anim/night_dancing.glb" },
+          DAY: { bg: "url('./assets/bg/day_bg.png')", glb: "./assets/anim/day_dancing.glb" },
+          BRIGHT: { bg: "url('./assets/bg/bright_bg.png')", glb: "./assets/anim/bright_dancing.glb" },
+          DUSK: { bg: "url('./assets/bg/dusk_bg.png')", glb: "./assets/anim/dusk_dancing.glb" }
+        }[state] || {};
+        document.body.style.setProperty("--bg", map.bg);
+        loadCharacter(map.glb);
+      }
 
-      function animate() {
-        requestAnimationFrame(animate);
-        const dt = clock.getDelta();
-        if (current.mixer) current.mixer.update(dt);
+      async function poll() {
+        try {
+          const res = await fetch("http://localhost:8080/status");
+          const data = await res.json();
+          
+          local.isLive = true;
+          ui.tele.textContent = `[SENSOR: ${data.telemetry.value}]`;
+          ui.subtitle.textContent = `Status: Live | State: ${data.telemetry.state.toLowerCase()}`;
+          updateAtmo(data.telemetry.state);
+
+          // The ID Guard: Only trigger narrative if it's a new message
+          if (data.missive.msg_id !== local.lastMsgId) {
+            local.lastMsgId = data.missive.msg_id;
+            typewriter(data.missive.scroll);
+            ui.hint.textContent = "New Missive Received";
+
+            if (local.audioWanted && data.missive.audio) {
+              voicePlayer.src = data.missive.audio;
+              voicePlayer.play().catch(() => { local.audioWanted = false; updateAudioUI(); });
+            }
+          }
+        } catch (e) {
+          if (!local.isLive) {
+            const h = new Date().getHours();
+            // const ds = (h>=19||h<6)?"NIGHT":(h<11?"DAY":(h<15?"BRIGHT":"DUSK"));
+            const ds = "BRIGHT";
+            updateAtmo(ds);
+            if (!ui.text.textContent) ui.text.textContent = SNIPPET[ds];
+          }
+        }
+      }
+
+      function updateAudioUI() {
+        ui.audioBtn.textContent = local.audioWanted ? "Audio: On" : "Audio: Off";
+        localStorage.setItem("gol_audio", local.audioWanted ? "1" : "0");
+      }
+
+      ui.audioBtn.addEventListener("click", () => {
+        local.audioWanted = !local.audioWanted;
+        updateAudioUI();
+        if (!local.audioWanted) voicePlayer.pause();
+      });
+
+      updateAudioUI();
+      setInterval(poll, 1200);
+      
+      const clk = new THREE.Clock();
+      function anim() {
+        requestAnimationFrame(anim);
+        if (currentModel.mixer) currentModel.mixer.update(clk.getDelta());
         renderer.render(scene, camera);
       }
-      animate();
+      anim();
+      window.addEventListener("resize", () => {
+        renderer.setSize(stage.clientWidth, stage.clientHeight);
+        camera.aspect = stage.clientWidth / stage.clientHeight;
+        camera.updateProjectionMatrix();
+      });
     </script>
   </body>
 </html>
