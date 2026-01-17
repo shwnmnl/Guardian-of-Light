@@ -36,9 +36,9 @@ CACHE_TTL = 120.0
 
 VOICE_BY_STATE = {
     "NIGHT": "XjdmlV0OFXfXE6Mg2Sb7",
-    "DUSK": "XjdmlV0OFXfXE6Mg2Sb7",
-    "DAY": "XjdmlV0OFXfXE6Mg2Sb7",
-    "BRIGHT": "XjdmlV0OFXfXE6Mg2Sb7",
+    "DUSK": "ruirxsoakN0GWmGNIo04",
+    "DAY": "wo6udizrrtpIxWGp2qJk",
+    "BRIGHT": "wo6udizrrtpIxWGp2qJk",
 }
 
 # --- GLOBAL STATE ---

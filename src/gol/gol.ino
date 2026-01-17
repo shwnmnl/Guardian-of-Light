@@ -43,7 +43,7 @@ namespace Config {
   constexpr int BOUNDARIES[] = {
     220,  // between STATE_NAMES[0] and [1]
     350,  // between STATE_NAMES[1] and [2]
-    750   // between STATE_NAMES[2] and [3]
+    450   // between STATE_NAMES[2] and [3]
   };
 
   // Choose the startup state index (0..N-1)

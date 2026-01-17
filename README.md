@@ -34,7 +34,7 @@ Start with the physical core of the system.
 - Click on `Serial Monitor` (magnifying glass in top-right corner of the Arduino IDE) and check that states are changing when you shine a light at the photocell or cover it with your finger. 
 
 
-<img src="assets/stuff/hardware.jpg" height="250">
+<img src="assets/stuff/arduino.jpg" height="300">
 
 Now that we've given our Guardian "senses", let's give them a body. 
 
